@@ -18,6 +18,17 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('', include('home.urls')),
+    path('home/', include('home.urls')),
     path('admin/', admin.site.urls),
+]
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.index, name="index"),
+    path('contato', views.contato, name="contato"),
+    path('ajuda', views.ajuda, name="ajuda"),
+    path('sobre', views.sobre, name="sobre"),
+    
 ]
