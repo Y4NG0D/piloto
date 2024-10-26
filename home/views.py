@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
-    return HttpResponse("<h1>A view funcionou!!! Wooow quee legaaal!</h1>")
+    return render(request, 'index.html')
 
 def sobre(request):
     return HttpResponse("<h2>Sistema 1.0 desenvolvido por mim mesmo!</h2>")
@@ -12,5 +12,5 @@ def sobre(request):
 def contato(request):
     return HttpResponse("<h2>Esta é a página de contato do nosso site!</h2>")
 
-def ajuda(request):
-    return HttpResponse("<h2>Esta é a página de ajuda do nosso site!</h2>")
+def home(request):
+    return HttpResponse("<h2>Esta é a página de home do nosso site!</h2>")
