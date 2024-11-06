@@ -14,3 +14,13 @@ def contato(request):
 
 def home(request):
     return HttpResponse("<h2>Esta é a página de home do nosso site!</h2>")
+
+#view exibir_item
+def exibir_item(request, id):
+    return render(request, "exibir_item.html, {'id':id}")
+
+def perfil(request, usuario):
+    context = {
+        'usuario': usuario
+    }
+    return render()

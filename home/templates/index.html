@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Página Principal Ui Ui</title>
-</head>
-<body>
-    <a = href="{% url 'nossa_home' %}">Home</a> |
-    <a = href="{% url 'sobre_nos' %}">Sobre</a> |
-    <a = href="{% url 'entre_em_contato' %}">Contato</a>
-    
-    <h1>Página Principal Ui Ui</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block titulo %} Home {% endblock %}
+
+{% block conteudo %}
+
+    <h1>Bem-Vindo Ao Nosso Sistema Web!</h1>
+
+{% endblock %}
