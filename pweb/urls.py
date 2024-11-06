@@ -27,4 +27,5 @@ urlpatterns = [
     path('home/', views.home, name='nossa_home'),
     path('item/<int:id>/', views.exibir_item, name='exibir_item'),
     path('perfil/<str:usuario>', views.perfil, name='perfil'),
+    path('diasemana/<int:numero>/', views.diasemana, name='diasemana'),
 ]
