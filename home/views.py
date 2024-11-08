@@ -10,7 +10,7 @@ def sobre(request):
     return HttpResponse("<h2>Sistema 1.0 desenvolvido por mim mesmo!</h2>")
 
 def contato(request):
-    return HttpResponse("<h2>Esta é a página de contato do nosso site!</h2>")
+    return render(request, 'contato.html')
 
 def home(request):
     return HttpResponse("<h2>Esta é a página de home do nosso site!</h2>")
@@ -24,6 +24,9 @@ def perfil(request, usuario):
         'usuario': usuario
     }
     return render(request, 'perfil.html', context)
+
+def cadweb(request):
+    return render(request, 'cadweb.html')
 
 def diasemana(request, numero):
     # definir os dias da semana
