@@ -32,22 +32,23 @@ def perfil(request, usuario):
     }
     return render(request, 'perfil.html', context)
 
-def diasemana(request, numero):
-    # definir os dias da semana
-    dias_semana = {
-        1: "Domingo",
-        2: "Segunda-feira",
-        3: "Terça-feira",
-        4: "Quarta-feira",
-        5: "Quinta-feira",
-        6: "Sexta-feira",
-        7: "Sábado"
-    }
+def diasemana(request,dia):
+    dia_semana = ""
+    if dia == 1:
+        dia_semana = 'Domingo'
+    elif dia == 2:
+        dia_semana = 'Segunda-Feira'
+    elif dia == 3:     
+        dia_semana = 'Terça-Feira'
+    elif dia == 4:
+        dia_semana = 'Quarta-Feira'
+    elif dia == 5:  
+        dia_semana = 'Quinta-Feira'
+    elif dia == 6:  
+        dia_semana = 'Sexta-Feira'
+    elif dia == 7:  
+        dia_semana = 'Sábado'
+    else:  
+        dia_semana = 'Inválido' 
     
-    # se n tiver de 1 a 7 da erro, se tiver funciona
-    dia = dias_semana.get(numero)
-    if dia:
-        context = {'numero': numero, 'dia': dia}
-        return render(request, 'diasemana.html', context)
-    else:
-        return render(request, "Número inválido! Digite um número de 1 a 7.", context)
+    return render(request, "diasemana.html", {'num':dia, 'dia':dia_semana})
