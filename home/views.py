@@ -7,26 +7,30 @@ def index(request):
     return render(request, 'index.html')
 
 def sobre(request):
-    return HttpResponse("<h2>Sistema 1.0 desenvolvido por mim mesmo!</h2>")
+    return render(request, 'sobre.html')
 
 def contato(request):
     return render(request, 'contato.html')
 
-def home(request):
-    return HttpResponse("<h2>Esta é a página de home do nosso site!</h2>")
-
 #view exibir_item
 def exibir_item(request, id):
     return render(request, "exibir_item.html", {'id':id})
+
+def produtos(request):
+    contexto = {
+        'lista': [
+            {'id':1, 'nome':'Notebook', 'preco':'2.500,00'},
+            {'id':2, 'nome':'Monitor', 'preco':'500,00'},
+            {'id':3, 'nome':'Teclado', 'preco':'80,00'},
+        ],
+    }
+    return render(request, 'produto/lista.html', contexto)
 
 def perfil(request, usuario):
     context = {
         'usuario': usuario
     }
     return render(request, 'perfil.html', context)
-
-def cadweb(request):
-    return render(request, 'cadweb.html')
 
 def diasemana(request, numero):
     # definir os dias da semana
@@ -46,4 +50,4 @@ def diasemana(request, numero):
         context = {'numero': numero, 'dia': dia}
         return render(request, 'diasemana.html', context)
     else:
-        return HttpResponse("Número inválido! Digite um número de 1 a 7.")
+        return render(request, "Número inválido! Digite um número de 1 a 7.", context)
