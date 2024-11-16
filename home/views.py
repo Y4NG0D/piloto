@@ -1,16 +1,30 @@
 from django.shortcuts import render
 
+from .forms import ContatoForm, ProdutoForm
+
 # Create your views here.
 from django.http import HttpResponse
 
 def index(request):
     return render(request, 'index.html')
 
+def forms(request):
+    form = ProdutoForm()
+    contexto = {
+        'form': form,
+    }
+    return render(request, 'contato.html', contexto)
+
 def sobre(request):
     return render(request, 'sobre.html')
 
 def contato(request):
-    return render(request, 'contato.html')
+    form = ContatoForm()
+    contexto = {
+        'form': form,
+    }
+    return render(request, 'contato.html', contexto)
+
 
 #view exibir_item
 def exibir_item(request, id):
