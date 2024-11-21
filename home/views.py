@@ -13,7 +13,7 @@ def forms(request):
     contexto = {
         'form': form,
     }
-    return render(request, 'contato.html', contexto)
+    return render(request, 'forms.html', contexto)
 
 def sobre(request):
     return render(request, 'sobre.html')
