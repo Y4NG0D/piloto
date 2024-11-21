@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
 
+{% block title_page %} Formulário de Produto {% endblock %}
 
-{% block title_page  %} Formulário de Produto {% endblock %}
-
-
-{% block conteudo  %}  
+{% block conteudo %}
 
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <div class="form-group">
+            <label for="{{ form.nome.id_for_label }}">{{ form.nome.label }}</label>
+            {{ form.nome }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.preco.id_for_label }}">{{ form.preco.label }}</label>
+            {{ form.preco }}
+        </div>
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
 
