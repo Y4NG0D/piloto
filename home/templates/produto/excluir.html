@@ -4,10 +4,35 @@
 
 {% block conteudo %} 
     
-    <script>
-        alert("Deseja excluir o produto com id: {{item}} ?")
-    </script>
-    <h2>Você está removendo o Produto ID {{item}}</h2>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        Swal.fire({
+            title: 'Confirmar Exclusão',
+            text: 'Tem certeza que deseja excluir o produto com ID: {{ item }}?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, excluir!',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Redireciona para a URL de exclusão
+                window.location.href = "{% url 'excluir_produto' item %}";
+            } else {
+                // Retorna à página anterior
+                window.history.back();
+            }
+        });
+    });
+</script>
 
+<!-- Mensagem para fallback caso JavaScript esteja desativado -->
+<noscript>
+    <p>O JavaScript está desativado no seu navegador. Para confirmar a exclusão, habilite o JavaScript ou clique <a href="{% url 'excluir_produto' item %}">aqui</a> para excluir manualmente.</p>
+</noscript>
 
+<h2>Você está removendo o Produto ID {{ item }}</h2>
 {% endblock %}
+
+
