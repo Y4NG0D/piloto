@@ -40,6 +40,20 @@ def produtos(request):
     }
     return render(request, 'produto/lista.html', contexto)
 
+def detalhes_produto(request, id):
+    return render(request, 'produto/detalhes.html', {'item':id})
+
+def editar_produto(request, id):
+    form = ProdutoForm()
+    contexto = {
+        'form': form,
+        'item': id,
+    }
+    return render(request, 'produto/forms.html', contexto)
+
+def excluir_produto(request, id):
+    return render(request, 'produto/excluir.html', {'item':id})
+
 def perfil(request, usuario):
     context = {
         'usuario': usuario
