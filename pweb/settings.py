@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'pweb.urls'
@@ -105,18 +106,24 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
 LANGUAGE_CODE = 'pt-br'
-
 TIME_ZONE = 'America/Fortaleza'
-
 USE_I18N = True
-
-USE_TZ = True
+USE_TZ = False
+# formatação de números e valores monetários de acordo com a localização (localização regional) da aplicação.
+USE_L10N = True #Habilita a localização (l10n = localization) no Django, ou seja, 
+#faz com que o Django ajuste a formatação de datas, números e outros formatos com base no idioma 
+USE_THOUSAND_SEPARATOR = True #Define se o Django deve usar o separador de milhar ao renderizar números.
+DECIMAL_SEPARATOR = ',' #Especifica o caractere que deve ser usado como separador decimal ao formatar números.
+THOUSAND_SEPARATOR = '.' #Define o separador de milhar a ser usado. Aqui, o ponto . será usado como separador de milhar, por exemplo, 1.234.567.
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'static/' # nome para a URL  para servir arquivos estáticos
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
