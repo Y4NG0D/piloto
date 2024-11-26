@@ -1,8 +1,8 @@
 """
-URL configuration for pweb project.
+URL configuration for piloto project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
+    https://docs.djangoproject.com/en/5.1/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -16,8 +16,25 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from home import views
 
 urlpatterns = [
-    path('', include('home.urls')),
+    path('home/', include('home.urls')),
     path('admin/', admin.site.urls),
 ]
+
+urlpatterns = [
+    path('', views.index, name="index"),
+    path('sobre/', views.sobre, name='sobre'),
+    path('contato/', views.contato, name='contato'),
+    path('item/<int:id>/', views.exibir_item, name='item'),
+    path('perfil/<str:usuario>/', views.perfil, name='perfil'),
+    path('diasemana/<int:dia>/', views.diasemana, name='diasemana'),
+    path('produtos/', views.produtos, name='produtos'),
+    path('produtos/forms/', views.forms, name='forms'),
+    path('produtos/detalhes/<int:id>/', views.detalhes_produto, name='detalhes_produto'),
+    path('produtos/editar/<int:id>/', views.editar_produto, name='editar_produto'),
+    path('produtos/excluir/<int:id>/', views.excluir_produto, name='excluir_produto'),
+]   
+
+
